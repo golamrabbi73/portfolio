@@ -1,0 +1,135 @@
+export const projects = [
+  {
+    id: 1,
+    slug: "shopease-ecommerce",
+    name: "ShopEase – E-Commerce Platform",
+    shortDesc:
+      "A full-featured e-commerce app with cart, auth, payments, and admin dashboard.",
+    image: "https://placehold.co/600x360/0f172a/00d4aa?text=ShopEase",
+    tags: ["React", "Node.js", "MongoDB", "Stripe"],
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Stripe API",
+      "JWT",
+      "Tailwind CSS",
+    ],
+    description:
+      "ShopEase is a complete e-commerce platform built for small businesses to sell products online. It features product browsing, cart management, user authentication, admin dashboard, and Stripe-based payment integration. The platform supports product filtering, search, and order history tracking.",
+    liveLink: "https://shopease-demo.vercel.app",
+    githubClient: "https://github.com/yourusername/shopease-client",
+    challenges: [
+      "Implementing real-time cart sync across multiple browser tabs using localStorage events.",
+      "Handling Stripe webhook events securely on the backend with proper idempotency.",
+      "Building a responsive admin dashboard with complex data tables and filters.",
+    ],
+    improvements: [
+      "Add product reviews and rating system.",
+      "Integrate wishlists and product comparison feature.",
+      "Implement AI-powered product recommendations.",
+      "Add multi-vendor support.",
+    ],
+    featured: true,
+  },
+  {
+    id: 2,
+    slug: "taskflow-project-management",
+    name: "TaskFlow – Project Management Tool",
+    shortDesc:
+      "A Trello-inspired drag-and-drop project management app with real-time collaboration.",
+    image: "https://placehold.co/600x360/0f172a/00d4aa?text=TaskFlow",
+    tags: ["Next.js", "Firebase", "DnD Kit", "Redux"],
+    tech: [
+      "Next.js",
+      "Firebase Firestore",
+      "Firebase Auth",
+      "Redux Toolkit",
+      "@dnd-kit",
+      "Tailwind CSS",
+    ],
+    description:
+      "TaskFlow is a collaborative project management tool where teams can create boards, lists, and cards. It features real-time updates powered by Firebase, drag-and-drop task ordering, user assignment, due dates, and priority labels.",
+    liveLink: "https://taskflow-demo.vercel.app",
+    githubClient: "https://github.com/yourusername/taskflow-client",
+    challenges: [
+      "Synchronizing drag-and-drop state with Firestore in real-time without flickering.",
+      "Managing complex nested state for boards → lists → cards with Redux Toolkit.",
+      "Optimizing Firestore queries to avoid excessive reads and stay within free tier.",
+    ],
+    improvements: [
+      "Add Gantt chart view for timeline visualization.",
+      "Build a mobile app version with React Native.",
+      "Add calendar integration with Google Calendar API.",
+      "Introduce team chat and comment threads.",
+    ],
+    featured: true,
+  },
+  {
+    id: 3,
+    slug: "weathernow-app",
+    name: "WeatherNow – Real-Time Weather App",
+    shortDesc:
+      "A beautiful weather app with 7-day forecast, location support, and dynamic backgrounds.",
+    image: "https://placehold.co/600x360/0f172a/00d4aa?text=WeatherNow",
+    tags: ["React", "OpenWeather API", "Geolocation", "Tailwind"],
+    tech: [
+      "React.js",
+      "OpenWeatherMap API",
+      "Geolocation API",
+      "Axios",
+      "Tailwind CSS",
+      "Recharts",
+    ],
+    description:
+      "WeatherNow is a visually rich weather application that fetches real-time and forecast weather data. Users can search by city or use their current location. The app displays temperature, humidity, wind speed, and a 7-day forecast with animated weather icons.",
+    liveLink: "https://weathernow-demo.vercel.app",
+    githubClient: "https://github.com/yourusername/weathernow-client",
+    challenges: [
+      "Handling Geolocation API permission denials gracefully with IP-based fallback.",
+      "Animating dynamic backgrounds (rainy, sunny, cloudy) without heavy libraries.",
+      "Debouncing city search input to prevent excessive API calls.",
+    ],
+    improvements: [
+      "Add weather alerts and push notifications.",
+      "Integrate air quality index (AQI) data.",
+      "Add historical weather charts.",
+      "Build a PWA version for offline access.",
+    ],
+    featured: true,
+  },
+  {
+    id: 4,
+    slug: "blogverse-platform",
+    name: "BlogVerse – Full Stack Blog Platform",
+    shortDesc:
+      "A Medium-inspired blog platform with rich text editing, comments, and OAuth.",
+    image: "https://placehold.co/600x360/0f172a/00d4aa?text=BlogVerse",
+    tags: ["Next.js", "MongoDB", "Cloudinary", "NextAuth"],
+    tech: [
+      "Next.js 14",
+      "MongoDB + Mongoose",
+      "NextAuth.js",
+      "Cloudinary",
+      "TipTap Editor",
+      "Tailwind CSS",
+    ],
+    description:
+      "BlogVerse is a full-stack blogging platform where users can write, edit, and publish articles using a rich text editor. It supports image uploads via Cloudinary, comments, likes, user profiles, and category filtering. Auth is handled by NextAuth with Google and GitHub OAuth.",
+    liveLink: "https://blogverse-demo.vercel.app",
+    githubClient: "https://github.com/yourusername/blogverse-client",
+    challenges: [
+      "Integrating TipTap rich text editor with Next.js App Router and SSR compatibility.",
+      "Managing image uploads to Cloudinary with proper loading states and error handling.",
+      "Implementing efficient pagination with MongoDB cursors for large collections.",
+    ],
+    improvements: [
+      "Add newsletter subscription via Resend.",
+      "Introduce a monetization/tipping system.",
+      "Add full-text search with MongoDB Atlas Search.",
+      "Build a mobile-first reading mode.",
+    ],
+    featured: false,
+  },
+];
