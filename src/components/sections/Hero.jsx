@@ -77,7 +77,7 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
-              <Button href="/assets/resume/resume.pdf" external className="glow gap-2">
+              <Button href="/my_resume.pdf" className="glow gap-2">
                 <FaDownload />
                 Download Resume
               </Button>

@@ -45,6 +45,7 @@ export default function Button({
         className={classes}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
+        download={!external ? true : undefined}
         {...props}
       >
         {children}
