@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import { FaDownload, FaArrowDown } from "react-icons/fa";
 import SocialLinks from "@/components/shared/SocialLinks";
 import Button from "@/components/ui/Button";
+import Image from "next/image";
 
 const roles = [
-  "Full Stack Developer",
+  "Frontend Developer",
   "React JS Developer",
   "Next.js Developer",
   "Problem Solver",
+  "Future AI Engineer",
 ];
 
 export default function Hero() {
@@ -59,7 +61,7 @@ export default function Hero() {
 
             <h1 className="font-display text-5xl md:text-6xl xl:text-7xl font-extrabold text-white leading-tight mb-4">
               Hi, I'm{" "}
-              <span className="text-accent">Your Name</span>
+              <span className="text-accent">Golam Rabbi</span>
             </h1>
 
             <div className="text-2xl md:text-3xl font-display font-semibold text-white/80 mb-6 h-10">
@@ -97,10 +99,12 @@ export default function Hero() {
               <div className="absolute inset-0 rounded-full border-2 border-accent/30 scale-110" />
               <div className="absolute inset-0 rounded-full border border-accent/10 scale-125" />
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/40 relative glow">
-                <img
-                  src="https://placehold.co/320x320/1e293b/00d4aa?text=Your+Photo"
+                <Image
+                  src="/golamrabbi.png"
                   alt="Your Name – Full Stack Developer"
                   className="w-full h-full object-cover"
+                  width={320}
+                  height={320}
                 />
               </div>
               <div className="absolute -bottom-2 -left-4 bg-accent text-base-300 font-display font-bold text-sm px-4 py-2 rounded-2xl shadow-lg">
