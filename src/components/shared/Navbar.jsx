@@ -35,45 +35,47 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Improved Scroll Spy
-useEffect(() => {
-  if (!isHome) return;
 
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY + 150;
+  // Scroll Spy
+  useEffect(() => {
+    if (!isHome) return;
 
-    let current = "home";
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 150;
 
-    navLinks.forEach((item) => {
-      const section = document.getElementById(item.id);
+      let current = "home";
 
-      if (section) {
-        const offsetTop = section.offsetTop;
-        const height = section.offsetHeight;
+      navLinks.forEach((item) => {
+        const section = document.getElementById(item.id);
 
-        if (
-          scrollPosition >= offsetTop &&
-          scrollPosition < offsetTop + height
-        ) {
-          current = item.id;
+        if (section) {
+          const offsetTop = section.offsetTop;
+          const height = section.offsetHeight;
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + height
+          ) {
+            current = item.id;
+          }
         }
-      }
-    });
+      });
 
-    setActiveSection(current);
-  };
+      setActiveSection(current);
+    };
 
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
-  handleScroll();
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
 
-  return () =>
-    window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
 
-}, [isHome]);
 
   const closeMenu = () => setIsOpen(false);
+
 
   return (
     <>
@@ -85,6 +87,7 @@ useEffect(() => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div
             className={`flex items-center justify-between rounded-2xl transition-all duration-300 ${
               scrolled
@@ -92,6 +95,7 @@ useEffect(() => {
                 : "bg-transparent px-0 py-0"
             }`}
           >
+
             {/* Logo */}
             <Link
               href="/"
@@ -101,9 +105,12 @@ useEffect(() => {
               <span className="text-base-content">/&gt;</span>
             </Link>
 
+
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-2">
-              {navLinks.map((item) => {
+
+              {navLinks.map((item)=>{
+
                 const active =
                   isHome && activeSection === item.id;
 
@@ -117,50 +124,67 @@ useEffect(() => {
                         : "text-base-content/70 hover:text-accent hover:bg-base-200"
                     }`}
                   >
+
                     {item.label}
 
                     {active && (
-                      <span className="absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full bg-accent" />
+                      <span className="absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full bg-accent"/>
                     )}
+
                   </Link>
                 );
+
               })}
+
             </nav>
+
+
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
+
               <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/my_resume.pdf"
+                download="Golam-Rabbi-Resume.pdf"
                 className="btn btn-outline rounded-full"
               >
-                <FiDownload className="text-base" />
+                <FiDownload className="text-base"/>
                 Resume
               </a>
+
 
               <Link
                 href="/#contact"
                 className="btn btn-accent rounded-full"
               >
                 Let's Talk
-                <FiArrowUpRight />
+                <FiArrowUpRight/>
               </Link>
+
             </div>
 
-            {/* Mobile Toggle */}
+
+
+            {/* Mobile Button */}
             <button
-              onClick={() => setIsOpen(true)}
+              onClick={()=>setIsOpen(true)}
               className="lg:hidden btn btn-ghost btn-circle"
               aria-label="Open Menu"
             >
-              <HiOutlineMenuAlt3 size={24} />
+              <HiOutlineMenuAlt3 size={24}/>
             </button>
+
+
           </div>
+
         </div>
       </header>
 
-      {/* ================= MOBILE MENU ================= */}
+
+
+
+      {/* Mobile Drawer */}
+
       <div
         className={`fixed inset-0 z-[999] lg:hidden transition-all duration-300 ${
           isOpen
@@ -168,15 +192,20 @@ useEffect(() => {
             : "invisible opacity-0"
         }`}
       >
+
         {/* Overlay */}
+
         <div
           onClick={closeMenu}
-          className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
-            isOpen ? "opacity-100" : "opacity-0"
+          className={`absolute inset-0 bg-black/50 backdrop-blur-sm ${
+            isOpen ? "opacity-100":"opacity-0"
           }`}
         />
 
+
+
         {/* Drawer */}
+
         <aside
           className={`absolute right-0 top-0 h-full w-80 bg-base-100 shadow-2xl transition-transform duration-300 ${
             isOpen
@@ -184,7 +213,11 @@ useEffect(() => {
               : "translate-x-full"
           }`}
         >
+
+
           <div className="flex items-center justify-between px-6 py-5 border-b border-base-content/10">
+
+
             <Link
               href="/"
               onClick={closeMenu}
@@ -194,52 +227,74 @@ useEffect(() => {
               <span className="text-base-content">/&gt;</span>
             </Link>
 
+
             <button
               onClick={closeMenu}
               className="btn btn-ghost btn-circle"
             >
-              <HiOutlineX size={24} />
+              <HiOutlineX size={24}/>
             </button>
+
+
           </div>
 
+
+
+
           <nav className="flex flex-col px-5 py-6 gap-2">
-                        {navLinks.map((item) => {
+
+
+            {navLinks.map((item)=>{
+
               const active =
-                (isHome && activeSection === item.id) ||
-                (!isHome && item.id === "projects");
+                isHome && activeSection === item.id;
+
 
               return (
+
                 <Link
                   key={item.id}
                   href={`/#${item.id}`}
                   onClick={closeMenu}
-                  className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 ${
+                  className={`flex items-center justify-between rounded-xl px-4 py-3 ${
                     active
                       ? "bg-accent/10 text-accent"
-                      : "text-base-content/80 hover:bg-base-200 hover:text-accent"
+                      : "hover:bg-base-200"
                   }`}
                 >
-                  <span>{item.label}</span>
+
+                  {item.label}
+
 
                   {active && (
-                    <span className="h-2 w-2 rounded-full bg-accent" />
+                    <span className="h-2 w-2 rounded-full bg-accent"/>
                   )}
+
                 </Link>
+
               );
+
             })}
 
-            <div className="divider my-4" />
+
+
+
+            <div className="divider my-4"/>
+
+
+
 
             <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline rounded-full w-full"
-              onClick={closeMenu}
+              href="/my_resume.pdf?download=1"
+              download="Golam-Rabbi-Resume.pdf"
+              className="btn btn-outline rounded-full"
             >
               <FiDownload />
-              Download Resume
+              Resume
             </a>
+
+
+
 
             <Link
               href="/#contact"
@@ -247,18 +302,30 @@ useEffect(() => {
               className="btn btn-accent rounded-full w-full mt-2"
             >
               Let's Talk
-              <FiArrowUpRight />
+              <FiArrowUpRight/>
             </Link>
+
+
           </nav>
 
-          <div className="mt-auto border-t border-base-content/10 px-6 py-5">
-            <p className="text-xs text-base-content/50 leading-relaxed">
-              Building modern, responsive, and high-performance web
-              applications with React, Next.js, and TypeScript.
+
+
+          <div className="absolute bottom-0 border-t border-base-content/10 px-6 py-5">
+
+            <p className="text-xs text-base-content/50">
+              Building modern, responsive and high-performance web applications with React, Next.js and TypeScript.
             </p>
+
           </div>
+
+
+
         </aside>
+
+
       </div>
+
+
     </>
   );
 }
