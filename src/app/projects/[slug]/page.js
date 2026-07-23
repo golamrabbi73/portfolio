@@ -9,8 +9,9 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
     title: `${project.name} - Golam Rabbi`,
@@ -18,8 +19,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function ProjectDetailPage({ params }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function ProjectDetailPage({ params }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
   return (
@@ -47,6 +49,16 @@ export default function ProjectDetailPage({ params }) {
             </span>
           ))}
         </div>
+
+        {project.image && !project.image.startsWith("PASTE_") && (
+          <div className="rounded-2xl overflow-hidden border border-base-content/10 mb-10">
+            <img
+              src={project.image}
+              alt={project.name}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-3 mb-12">
           {project.liveLink && (

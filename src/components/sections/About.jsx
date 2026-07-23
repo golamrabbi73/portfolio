@@ -5,10 +5,10 @@ import Button from "@/components/ui/Button";
 import Image from "next/image";
 
 const stats = [
-  { value: "2+", label: "Years Experience" },
-  { value: "20+", label: "Projects Done" },
-  { value: "10+", label: "Happy Clients" },
-  { value: "5+", label: "Technologies" },
+  { value: "5+", label: "Projects Built" },
+  { value: "15+", label: "Technologies" },
+  { value: "2022", label: "Coding Since" },
+  { value: "Open", label: "For Opportunities" },
 ];
 
 const interests = [
@@ -31,7 +31,7 @@ export default function About() {
               <div className="absolute -top-4 -left-4 w-full h-full border-2 border-accent/30 rounded-2xl" />
               <Image
                 src="/golamrabbi.png"
-                alt="About Your Name"
+                alt="Golam Rabbi"
                 className="relative z-10 rounded-2xl w-full object-cover shadow-2xl"
                 width={320}
                 height={320}
@@ -64,7 +64,7 @@ export default function About() {
                 My programming journey started in{" "}
                 <strong className="text-base-content">2022</strong> when I
                 stumbled upon HTML and instantly felt the magic of building
-                something visible in a browser. Since then, I've never looked
+                something visible in a browser. Since then, I&apos;ve never looked
                 back — diving deep into JavaScript, React, and eventually the
                 full stack world with Node.js and databases.
               </p>
@@ -74,11 +74,11 @@ export default function About() {
                   challenging frontend problems
                 </strong>{" "}
                 — crafting pixel-perfect UIs, smooth animations, and responsive
-                layouts that just feel right. I'm equally comfortable on the
+                layouts that just feel right. I&apos;m equally comfortable on the
                 backend, building REST APIs and managing databases.
               </p>
               <p>
-                Outside of programming, I'm passionate about{" "}
+                Outside of programming, I&apos;m passionate about{" "}
                 <strong className="text-base-content">football</strong> — I
                 play every weekend with friends. I also enjoy{" "}
                 <strong className="text-base-content">music</strong>, long

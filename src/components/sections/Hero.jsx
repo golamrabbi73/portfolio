@@ -57,7 +57,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex-1 text-center lg:text-left"
+            className="flex-1 text-center lg:text-left lg:pl-8 lg:depth-rule"
           >
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-sm font-medium px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
@@ -65,7 +65,7 @@ export default function Hero() {
             </div>
 
             <h1 className="font-display text-5xl md:text-6xl xl:text-7xl font-extrabold text-white leading-tight mb-4">
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="text-accent">Golam Rabbi</span>
             </h1>
 
@@ -82,7 +82,7 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
-              <Button href="/my_resume.pdf" className="glow gap-2">
+              <Button href="/my_resume.pdf" download className="glow gap-2">
                 <FaDownload />
                 Download Resume
               </Button>

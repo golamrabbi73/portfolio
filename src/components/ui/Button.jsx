@@ -13,6 +13,7 @@ export default function Button({
   className = "",
   href,
   external = false,
+  download = false,
   ...props
 }) {
   const base = "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 active:scale-95";
@@ -45,7 +46,7 @@ export default function Button({
         className={classes}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        download={!external ? true : undefined}
+        download={download ? true : undefined}
         {...props}
       >
         {children}
