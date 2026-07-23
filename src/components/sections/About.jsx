@@ -1,120 +1,166 @@
-import { FaCode, FaHeart, FaFutbol, FaMusic } from "react-icons/fa";
+"use client";
+
+import Image from "next/image";
+import { FaCode, FaRocket, FaDatabase, FaLaptopCode } from "react-icons/fa";
+
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
-import Image from "next/image";
 
 const stats = [
-  { value: "5+", label: "Projects Built" },
-  { value: "15+", label: "Technologies" },
-  { value: "2022", label: "Coding Since" },
-  { value: "Open", label: "For Opportunities" },
+  {
+    value: "10+",
+    label: "Projects Built",
+  },
+  {
+    value: "15+",
+    label: "Technologies",
+  },
+  {
+    value: "3+",
+    label: "Years Learning",
+  },
+  {
+    value: "100%",
+    label: "Problem Driven",
+  },
 ];
 
-const interests = [
-  { icon: <FaCode />, label: "Clean Code" },
-  { icon: <FaHeart />, label: "Open Source" },
-  { icon: <FaFutbol />, label: "Football" },
-  { icon: <FaMusic />, label: "Music" },
+const highlights = [
+  {
+    icon: <FaCode />,
+    title: "Clean Code",
+    desc: "Writing maintainable and scalable solutions",
+  },
+  {
+    icon: <FaRocket />,
+    title: "Modern Stack",
+    desc: "React, Next.js, TypeScript ecosystem",
+  },
+  {
+    icon: <FaDatabase />,
+    title: "Full Stack",
+    desc: "APIs, databases and backend integration",
+  },
+  {
+    icon: <FaLaptopCode />,
+    title: "User Focused",
+    desc: "Building smooth digital experiences",
+  },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-base-200">
+    <section id="about" className="bg-base-200 py-24">
       <Container>
         <SectionTitle eyebrow="Who I Am" title="About Me" />
 
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+        <div className="mt-12 grid items-center gap-16 lg:grid-cols-2">
           {/* Image */}
-          <div className="flex-shrink-0 relative w-full max-w-sm mx-auto lg:mx-0">
+          <div className="relative mx-auto max-w-md">
+            <div className="absolute -inset-5 rounded-3xl bg-accent/10 blur-2xl" />
+
             <div className="relative">
-              <div className="absolute -top-4 -left-4 w-full h-full border-2 border-accent/30 rounded-2xl" />
+              <div className="absolute top-5 left-5 h-full w-full rounded-3xl border-2 border-accent/30" />
+
               <Image
                 src="/golamrabbi.png"
-                alt="Golam Rabbi"
-                className="relative z-10 rounded-2xl w-full object-cover shadow-2xl"
-                width={320}
-                height={320}
+                alt="Golam Rabbi - Developer"
+                width={420}
+                height={420}
+                className="relative z-10 rounded-3xl object-cover shadow-2xl"
               />
-              <div className="absolute z-20 -bottom-6 -right-6 bg-base-100 border border-accent/20 rounded-xl p-4 shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                    <FaCode className="text-accent" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-base-content/50">Clean Code</p>
-                    <p className="font-display font-bold text-sm">Always.</p>
-                  </div>
-                </div>
+
+              <div className="absolute right-0 bottom-6 z-20 rounded-2xl border border-base-content/10 bg-base-100 px-5 py-4 shadow-xl">
+                <p className="text-xs text-base-content/50">
+                  Currently Building
+                </p>
+
+                <p className="font-bold text-accent">
+                  GeoLog Platform
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Text */}
-          <div className="flex-1">
-            <h3 className="font-display text-3xl font-bold mb-2">
-              Frontend Developer based in Bangladesh
+          {/* Content */}
+          <div>
+            <h3 className="font-display text-3xl leading-tight font-bold md:text-4xl">
+              Building scalable web applications with modern technologies.
             </h3>
-            <p className="text-accent font-medium mb-6">
-              Turning ideas into elegant digital experiences
+
+            <p className="mt-3 mb-6 font-semibold text-accent">
+              Frontend Developer | React.js | Next.js
             </p>
 
-            <div className="space-y-4 text-base-content/70 leading-relaxed mb-8">
+            <div className="space-y-5 leading-relaxed text-base-content/70">
               <p>
-                My programming journey started in{" "}
-                <strong className="text-base-content">2022</strong> when I
-                stumbled upon HTML and instantly felt the magic of building
-                something visible in a browser. Since then, I&apos;ve never looked
-                back — diving deep into JavaScript, React, and eventually the
-                full stack world with Node.js and databases.
+                I am{" "}
+                <strong className="text-base-content">Golam Rabbi</strong>, a
+                passionate web developer focused on creating modern, responsive
+                and high-performance web applications.
               </p>
+
               <p>
-                I love working on{" "}
+                My journey started with HTML, CSS and JavaScript, and gradually
+                evolved into building complete applications using
                 <strong className="text-base-content">
-                  challenging frontend problems
-                </strong>{" "}
-                — crafting pixel-perfect UIs, smooth animations, and responsive
-                layouts that just feel right. I&apos;m equally comfortable on the
-                backend, building REST APIs and managing databases.
+                  {" "}
+                  React, Next.js, TypeScript and Node.js.
+                </strong>
               </p>
+
               <p>
-                Outside of programming, I&apos;m passionate about{" "}
-                <strong className="text-base-content">football</strong> — I
-                play every weekend with friends. I also enjoy{" "}
-                <strong className="text-base-content">music</strong>, long
-                walks, and the occasional book. I believe a rested mind writes
-                better code.
+                Currently, I am developing
+                <strong className="text-base-content"> GeoLog</strong> — an
+                enterprise platform for subsurface data and core sample
+                management in the petroleum and mining domain.
+              </p>
+
+              <p>
+                I enjoy solving complex problems, designing clean user
+                interfaces and turning ideas into reliable digital products.
               </p>
             </div>
 
-            {/* Interests */}
-            <div className="flex flex-wrap gap-3 mb-10">
-              {interests.map((item) => (
-                <span
-                  key={item.label}
-                  className="flex items-center gap-2 bg-accent/10 text-accent border border-accent/20 px-4 py-2 rounded-full text-sm font-medium"
+            {/* Highlights */}
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {highlights.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-base-content/10 bg-base-100 p-4 transition hover:border-accent/40"
                 >
-                  {item.icon}
-                  {item.label}
-                </span>
+                  <div className="mb-2 text-xl text-accent">{item.icon}</div>
+
+                  <h4 className="font-bold">{item.title}</h4>
+
+                  <p className="mt-1 text-sm text-base-content/60">
+                    {item.desc}
+                  </p>
+                </div>
               ))}
             </div>
 
-            <Button href="/#contact">Let's Work Together</Button>
+            <div className="mt-8">
+              <Button href="/#contact">Let's Work Together</Button>
+            </div>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+        <div className="mt-20 grid grid-cols-2 gap-6 md:grid-cols-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="card bg-base-100 border border-base-content/10 text-center p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="rounded-2xl border border-base-content/10 bg-base-100 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2"
             >
-              <p className="font-display text-4xl font-extrabold text-accent mb-1">
+              <h4 className="text-4xl font-black text-accent">
                 {stat.value}
+              </h4>
+
+              <p className="mt-2 text-sm text-base-content/60">
+                {stat.label}
               </p>
-              <p className="text-base-content/60 text-sm">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -122,3 +168,4 @@ export default function About() {
     </section>
   );
 }
+

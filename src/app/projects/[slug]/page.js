@@ -1,116 +1,202 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FaExternalLinkAlt, FaGithub, FaArrowLeft } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaCheckCircle,
+  FaExternalLinkAlt,
+  FaGithub,
+  FaLightbulb,
+} from "react-icons/fa";
+
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+
 import { projects } from "@/data/projects";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+
+  const project = projects.find(
+    (project) => project.slug === slug
+  );
+
   if (!project) return {};
+
   return {
-    title: `${project.name} - Golam Rabbi`,
+    title: `${project.name} | Golam Rabbi`,
     description: project.shortDesc,
   };
 }
 
 export default async function ProjectDetailPage({ params }) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+
+  const project = projects.find(
+    (project) => project.slug === slug
+  );
+
   if (!project) return notFound();
 
   return (
-    <section className="py-24 bg-base-100 min-h-screen">
+    <section className="min-h-screen bg-base-100 py-24">
       <Container size="narrow">
+        {/* Back */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-accent text-sm font-medium mb-8 hover:underline"
+          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
         >
-          <FaArrowLeft /> Back to Projects
+          <FaArrowLeft />
+          Back to Projects
         </Link>
 
-        <h1 className="font-display text-3xl md:text-4xl font-extrabold mb-3">
-          {project.name}
-        </h1>
-        <p className="text-base-content/60 text-lg mb-6">{project.shortDesc}</p>
-
-        <div className="flex flex-wrap gap-2 mb-8">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="badge badge-outline text-accent border-accent/30 text-xs"
-            >
-              {tag}
+        {/* Header */}
+        <div className="mb-10">
+          <div className="mb-5 flex flex-wrap gap-3">
+            <span className="badge badge-outline border-accent/40 text-accent">
+              {project.category}
             </span>
-          ))}
+
+            {project.featured && (
+              <span className="badge bg-accent text-accent-content">
+                Featured Project
+              </span>
+            )}
+          </div>
+
+          <h1 className="font-display text-4xl leading-tight font-black md:text-5xl">
+            {project.name}
+          </h1>
+
+          <p className="mt-5 text-lg leading-relaxed text-base-content/70">
+            {project.shortDesc}
+          </p>
         </div>
 
-        {project.image && !project.image.startsWith("PASTE_") && (
-          <div className="rounded-2xl overflow-hidden border border-base-content/10 mb-10">
-            <img
+        {/* Image */}
+        {project.image && (
+          <div className="relative mb-12 h-[300px] overflow-hidden rounded-3xl border border-base-content/10 md:h-[500px]">
+            <Image
               src={project.image}
               alt={project.name}
-              className="w-full h-auto object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         )}
 
-        <div className="flex flex-wrap gap-3 mb-12">
+        {/* Buttons */}
+        <div className="mb-14 flex flex-wrap gap-4">
           {project.liveLink && (
-            <Button href={project.liveLink} external variant="accent">
-              <FaExternalLinkAlt /> Live Demo
+            <Button
+              href={project.liveLink}
+              external
+              variant="accent"
+            >
+              <FaExternalLinkAlt />
+              Live Demo
             </Button>
           )}
+
           {project.githubClient && (
-            <Button href={project.githubClient} external variant="outline">
-              <FaGithub /> Client Code
+            <Button
+              href={project.githubClient}
+              external
+              variant="outline"
+            >
+              <FaGithub />
+              Client Code
             </Button>
           )}
+
           {project.githubServer && (
-            <Button href={project.githubServer} external variant="outline">
-              <FaGithub /> Server Code
+            <Button
+              href={project.githubServer}
+              external
+              variant="outline"
+            >
+              <FaGithub />
+              Server Code
             </Button>
           )}
         </div>
 
-        <div className="prose max-w-none mb-10">
-          <h2 className="font-display font-bold text-xl mb-3">Overview</h2>
-          <p className="text-base-content/70 leading-relaxed">{project.description}</p>
+        {/* Overview */}
+        <div className="mb-12">
+          <h2 className="mb-4 font-display text-2xl font-bold">
+            Project Overview
+          </h2>
+
+          <p className="leading-relaxed text-base-content/70">
+            {project.description}
+          </p>
         </div>
 
-        <div className="mb-6">
-          <h3 className="font-display font-bold text-lg mb-2">Tech Stack</h3>
-          <div className="flex flex-wrap gap-2">
-            {project.tech.map((t) => (
-              <span key={t} className="badge badge-outline border-accent/30 text-accent/70 text-xs">
-                {t}
-              </span>
+        {/* Tech Stack */}
+        <div className="mb-12">
+          <h2 className="mb-5 font-display text-2xl font-bold">
+            Technology Stack
+          </h2>
+
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+            {project.tech.map((tech) => (
+              <div
+                key={tech}
+                className="rounded-xl border border-base-content/10 bg-base-200 p-3 text-sm font-medium transition hover:border-accent"
+              >
+                {tech}
+              </div>
             ))}
           </div>
         </div>
 
+        {/* Challenges */}
         {project.challenges?.length > 0 && (
-          <div className="mb-10">
-            <h3 className="font-display font-bold text-lg mb-3">Challenges & Decisions</h3>
-            <ul className="list-disc list-inside space-y-2 text-base-content/70 text-sm leading-relaxed">
-              {project.challenges.map((c, i) => (
-                <li key={i}>{c}</li>
+          <div className="mb-12">
+            <h2 className="mb-5 flex items-center gap-2 font-display text-2xl font-bold">
+              <FaLightbulb className="text-accent" />
+              Challenges & Solutions
+            </h2>
+
+            <div className="space-y-4">
+              {project.challenges.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex gap-3 rounded-2xl bg-base-200 p-5"
+                >
+                  <FaCheckCircle className="mt-1 flex-shrink-0 text-accent" />
+
+                  <p className="text-sm leading-relaxed text-base-content/70">
+                    {item}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         )}
 
+        {/* Improvements */}
         {project.improvements?.length > 0 && (
           <div>
-            <h3 className="font-display font-bold text-lg mb-3">Future Improvements</h3>
-            <ul className="list-disc list-inside space-y-2 text-base-content/70 text-sm leading-relaxed">
-              {project.improvements.map((imp, i) => (
-                <li key={i}>{imp}</li>
+            <h2 className="mb-5 font-display text-2xl font-bold">
+              Future Improvements
+            </h2>
+
+            <ul className="space-y-3">
+              {project.improvements.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex gap-3 text-sm text-base-content/70"
+                >
+                  <span className="text-accent">→</span>
+                  {item}
+                </li>
               ))}
             </ul>
           </div>

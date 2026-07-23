@@ -1,62 +1,173 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
-import SkillBar from "@/components/ui/SkillBar";
-import { skillCategories, otherSkills } from "@/data/skills";
+
+import {
+  FaReact,
+  FaServer,
+  FaTools,
+  FaDatabase,
+} from "react-icons/fa";
+
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiJavascript,
+  SiMongodb,
+  SiGithub,
+  SiFirebase,
+} from "react-icons/si";
+
+const categories = [
+  {
+    title: "Frontend Development",
+    icon: <FaReact />,
+    skills: [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "JavaScript ES6+",
+      "Tailwind CSS",
+      "DaisyUI",
+      "Framer Motion",
+      "Responsive Design",
+    ],
+  },
+
+  {
+    title: "Backend & Database",
+    icon: <FaServer />,
+    skills: [
+      "Node.js",
+      "Express.js",
+      "REST API",
+      "MongoDB",
+      "Authentication",
+      "JWT",
+      "Firebase",
+    ],
+  },
+
+  {
+    title: "Tools & Workflow",
+    icon: <FaTools />,
+    skills: [
+      "Git & GitHub",
+      "VS Code",
+      "Vercel",
+      "Netlify",
+      "Postman",
+      "Figma",
+    ],
+  },
+
+  {
+    title: "Currently Learning",
+    icon: <FaDatabase />,
+    skills: [
+      "Advanced TypeScript",
+      "System Design",
+      "Cloud Deployment",
+      "AI Integration",
+      "Scalable Architecture",
+    ],
+  },
+];
+
+const techIcons = [
+  {
+    name: "React",
+    icon: <FaReact />,
+  },
+  {
+    name: "Next.js",
+    icon: <SiNextdotjs />,
+  },
+  {
+    name: "TypeScript",
+    icon: <SiTypescript />,
+  },
+  {
+    name: "JavaScript",
+    icon: <SiJavascript />,
+  },
+  {
+    name: "Tailwind",
+    icon: <SiTailwindcss />,
+  },
+  {
+    name: "MongoDB",
+    icon: <SiMongodb />,
+  },
+  {
+    name: "Firebase",
+    icon: <SiFirebase />,
+  },
+  {
+    name: "GitHub",
+    icon: <SiGithub />,
+  },
+];
 
 export default function Skills() {
-  const [animate, setAnimate] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setAnimate(true); },
-      { threshold: 0.2 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="skills" className="py-24 bg-base-100" ref={ref}>
+    <section id="skills" className="py-24 bg-base-100">
       <Container>
         <SectionTitle
-          eyebrow="What I Know"
-          title="My Skills"
-          subtitle="A snapshot of the technologies and tools I work with daily"
+          eyebrow="Technical Expertise"
+          title="Skills & Technologies"
+          subtitle="Technologies I use to build modern, scalable and user-focused applications."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skillCategories.map((cat) => (
+        {/* Skill Categories */}
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          {categories.map((cat) => (
             <div
               key={cat.title}
-              className="card bg-base-200 border border-base-content/10 p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="rounded-3xl border border-base-content/10 bg-base-200 p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
-              <h3 className={`font-display font-bold text-xl mb-6 ${cat.colorClass} flex items-center gap-2`}>
-                <span className="w-2 h-6 bg-current rounded-full" />
-                {cat.title}
-              </h3>
-              {cat.skills.map((skill) => (
-                <SkillBar key={skill.name} {...skill} animate={animate} />
-              ))}
+              <div className="mb-6 flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-xl text-accent">
+                  {cat.icon}
+                </div>
+
+                <h3 className="font-display text-xl font-bold">
+                  {cat.title}
+                </h3>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-base-content/10 bg-base-100 px-4 py-2 text-sm font-medium transition hover:border-accent hover:text-accent"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Other Skills Cloud */}
-        <div className="mt-16 text-center">
-          <p className="text-base-content/50 text-sm mb-6 uppercase tracking-widest">
-            Also familiar with
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {otherSkills.map((tech) => (
-              <span
-                key={tech}
-                className="badge badge-outline border-accent/30 text-accent/80 px-4 py-3 text-sm font-medium hover:border-accent hover:text-accent transition-colors duration-200 cursor-default"
+        {/* Tech Cloud */}
+        <div className="mt-20">
+          <h3 className="mb-8 text-center font-display text-xl font-bold">
+            My Everyday Stack
+          </h3>
+
+          <div className="flex flex-wrap justify-center gap-5">
+            {techIcons.map((tech) => (
+              <div
+                key={tech.name}
+                className="flex items-center gap-3 rounded-2xl border border-base-content/10 bg-base-200 px-5 py-3 transition hover:border-accent hover:text-accent"
               >
-                {tech}
-              </span>
+                <span className="text-xl">{tech.icon}</span>
+
+                <span className="font-medium">{tech.name}</span>
+              </div>
             ))}
           </div>
         </div>

@@ -1,78 +1,116 @@
-import { FaMedal } from "react-icons/fa";
+import {
+  FaGraduationCap,
+  FaCode,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { educations } from "@/data/education";
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 bg-base-200">
+    <section
+      id="education"
+      className="bg-base-200 py-24"
+    >
       <Container size="narrow">
-        <SectionTitle eyebrow="My Background" title="Education" />
+        <SectionTitle
+          eyebrow="Academic Journey"
+          title="Education & Background"
+          subtitle="My academic foundation and the journey that shaped my problem-solving mindset."
+        />
 
-        <div className="relative">
-          {/* Timeline vertical line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-accent/20 -translate-x-1/2" />
+        <div className="relative mt-12">
+          {/* Timeline Line */}
+          <div className="absolute top-0 bottom-0 left-6 w-px bg-accent/20 md:left-1/2" />
 
-          <div className="space-y-12">
-            {educations.map((edu, i) => (
+          <div className="space-y-10">
+            {educations.map((edu, index) => (
               <div
                 key={edu.id}
-                className={`relative flex flex-col md:flex-row gap-8 ${
-                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                className={`relative flex items-center ${
+                  index % 2 === 0
+                    ? "md:flex-row"
+                    : "md:flex-row-reverse"
                 }`}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-6 w-4 h-4 bg-accent rounded-full border-4 border-base-200 z-10" />
+                {/* Timeline Dot */}
+                <div className="absolute top-1/2 left-6 z-10 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-base-200 bg-accent md:left-1/2" />
 
                 {/* Card */}
                 <div
-                  className={`flex-1 ${
-                    i % 2 === 0
-                      ? "md:pr-12 ml-14 md:ml-0"
-                      : "md:pl-12 ml-14 md:ml-0"
+                  className={`ml-14 w-full md:ml-0 md:w-1/2 ${
+                    index % 2 === 0
+                      ? "md:pr-12"
+                      : "md:pl-12"
                   }`}
                 >
-                  <div className="card bg-base-100 border border-base-content/10 shadow-lg p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                    <div className="flex items-start justify-between flex-wrap gap-2 mb-3">
+                  <div className="rounded-3xl border border-base-content/10 bg-base-100 p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div className="flex flex-wrap justify-between gap-4">
                       <div>
-                        <h3 className="font-display font-bold text-lg">
-                          {edu.degree}
-                        </h3>
-                        <p className="text-accent font-medium mt-0.5">
+                        {/* Degree */}
+                        <div className="mb-2 flex items-center gap-3">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                            <FaGraduationCap />
+                          </div>
+
+                          <h3 className="font-display text-xl font-bold">
+                            {edu.degree}
+                          </h3>
+                        </div>
+
+                        {/* Institution */}
+                        <p className="font-semibold text-accent">
                           {edu.institution}
                         </p>
-                        <p className="text-base-content/50 text-sm">
+
+                        {/* Location */}
+                        <div className="mt-1 flex items-center gap-2 text-sm text-base-content/50">
+                          <FaMapMarkerAlt />
                           {edu.location}
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <span className="badge badge-accent badge-outline text-xs font-semibold px-3 py-2">
-                          {edu.period}
-                        </span>
-                        <div className="flex items-center gap-1 mt-2 justify-end">
-                          <FaMedal className="text-yellow-400 text-sm" />
-                          <span className="text-sm font-semibold text-yellow-400">
-                            {edu.result}
-                          </span>
                         </div>
                       </div>
+
+                      {/* Period */}
+                      <span className="badge badge-outline border-accent/40 font-medium text-accent">
+                        {edu.period}
+                      </span>
                     </div>
-                    <ul className="space-y-1.5 mt-3">
-                      {edu.details.map((d, j) => (
+
+                    {/* Education Details */}
+                    <ul className="mt-6 space-y-3">
+                      {edu.details.map((item, i) => (
                         <li
-                          key={j}
-                          className="flex items-start gap-2 text-sm text-base-content/60"
+                          key={i}
+                          className="flex gap-3 text-sm text-base-content/70"
                         >
-                          <span className="text-accent mt-0.5 flex-shrink-0">›</span>
-                          {d}
+                          <span className="font-bold text-accent">
+                            ✓
+                          </span>
+
+                          {item}
                         </li>
                       ))}
                     </ul>
+
+                    {/* Developer Connection */}
+                    {index === 0 && (
+                      <div className="mt-6 rounded-2xl border border-accent/20 bg-accent/10 p-4">
+                        <div className="mb-1 flex items-center gap-2 font-semibold text-accent">
+                          <FaCode />
+                          Developer Journey
+                        </div>
+
+                        <p className="text-sm text-base-content/70">
+                          Combining engineering knowledge with software
+                          development to build domain-focused solutions like
+                          GeoLog.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
-
-                {/* Alternating spacer */}
-                <div className="hidden md:block flex-1" />
               </div>
             ))}
           </div>
@@ -81,3 +119,4 @@ export default function Education() {
     </section>
   );
 }
+
