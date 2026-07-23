@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
@@ -16,7 +18,13 @@ export default function SectionTitle({
   };
 
   return (
-    <div className={cn("flex flex-col mb-14", alignClass[align], className)}>
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5 }}
+      className={cn("flex flex-col mb-14", alignClass[align], className)}
+    >
       {eyebrow && (
         <p className="text-accent font-semibold tracking-widest text-sm uppercase mb-2">
           {eyebrow}
@@ -34,6 +42,6 @@ export default function SectionTitle({
       {subtitle && (
         <p className="text-base-content/60 text-lg max-w-xl">{subtitle}</p>
       )}
-    </div>
+    </motion.div>
   );
 }

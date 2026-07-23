@@ -1,15 +1,15 @@
 export const educations = [
   {
     id: 1,
-    degree: "B.Sc. in Petroleaum & Mining Engineering",
-    institution: "Jashore University of Science and Technology",
-    location: "Dhaka, Bangladesh",
-    period: "2022 – 2027",
-    result: "CGPA: 3.25 / 4.00",
+    degree: "B.Sc. in Petroleum & Mining Engineering",
+    institution: "Jashore University of Science and Technology (JUST)",
+    location: "Jashore, Bangladesh",
+    period: "2022 – Present",
+    result: "CGPA: 3.01 / 4.00 (ongoing)",
     details: [
-      "Relevant Courses: Data Structures, Algorithms, Web Technologies, Database Systems",
-      "Thesis: AI-powered recommendation system using collaborative filtering",
-      "Active Member of Programming Club",
+      "Core engineering discipline; pursuing full-stack web development professionally alongside academics",
+      "Completed Programming Hero's full-stack web development program (SCIC job placement track)",
+      "Applying domain background (petroleum/mining/geology) to build industry-relevant software, e.g. GeoLog",
     ],
   },
   {

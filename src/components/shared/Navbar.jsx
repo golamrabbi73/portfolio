@@ -8,7 +8,6 @@ const navLinks = [
   { label: "About", href: "/#about" },
   { label: "Skills", href: "/#skills" },
   { label: "Education", href: "/#education" },
-  { label: "Experience", href: "/#experience" },
   { label: "Projects", href: "/#projects" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -23,7 +22,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       if (!isHome) return;
-      const sections = ["home", "about", "skills", "education", "experience", "projects", "contact"];
+      const sections = ["home", "about", "skills", "education", "projects", "contact"];
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el && window.scrollY >= el.offsetTop - 120) {
